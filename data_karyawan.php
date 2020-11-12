@@ -1,0 +1,367 @@
+<?php
+error_reporting(0); 
+require_once("koneksi.php");
+session_start();
+ ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Data Karyawan</title>
+
+    <!-- Fontfaces CSS-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="all">
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="view/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="view/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="view/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="view/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- View CSS-->
+    <link href="view/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+      <?php 
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header("location: index.php");
+    }else {
+        $username = $_SESSION['username'];  
+    }
+
+ ?>
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                   <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="admin.php">
+                                <i class="fas fa-tachometer-alt"></i>Beranda</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="data_karyawan.php">
+                                <i class="fas fa-chart-bar"></i>Data Karyawan</a>
+                        </li>
+                        <li>
+                            <a href="data_user.php">
+                                <i class="fas fa-table"></i>Data user</a>
+                        </li>
+                        <li>
+                            <a href="data_jabatan.php">
+                                <i class="far fa-check-square"></i>Data Jabatan</a>
+                        </li>
+                        <li>
+                            <a href="data_absen.php">
+                                <i class="fas fa-calendar-alt"></i>Data Absen</a>
+                        </li>
+                       <li>
+                            <a href="data_keterangan.php">
+                                <i class="fas fa-table"></i>Data Keterangan
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <h2>Admin</h2>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a class="js-arrow" href="admin.php">
+                                <i class="fas fa-tachometer-alt"></i>Beranda</a>
+                          
+                        </li>
+                          <li class="active">
+                            <a href="data_karyawan.php">
+                                <i class="fas fa-chart-bar"></i>Data Karyawan</a>
+                        </li>
+                        <li>
+                            <a href="data_user.php">
+                                <i class="fas fa-table"></i>Data User</a>
+                        </li>
+                        <li>
+                            <a href="data_jabatan.php">
+                                <i class="far fa-check-square"></i>Data Jabatan</a>
+                        </li>
+                        <li>
+                            <a href="data_absen.php">
+                                <i class="fas fa-calendar-alt"></i>Data Absen</a>
+                        </li>
+                        <li>
+                            <a href="data_keterangan.php">
+                                <i class="fas fa-map-marker-alt"></i>Data Keterangan</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                           
+                             <form class="form-header" action="prospenkar.php" method="POST">
+                                <input class="au-input au-input--xl" autocomplete="off" type="text" name="cari" placeholder="Cari ID atau nama karyawan" />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
+                            <div class="header-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                           <div class="table-responsive table--no-card m-b-30">
+                                <form action="data_karyawan_save.php" enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <table class="table table-borderless table-striped table-earning" >  
+                                            <tbody>
+                                                <tr>
+                                                    <td>NIP</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" maxlength="9" required="" name="id_karyawan" autocomplete="off" size="25px" maxlength="25px">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Username</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" required="" name="username" autocomplete="off">    
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Password</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" required="" name="password" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nama</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" required="" name="nama" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat dan Tanggal Lahir</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" required="" name="tmp_tgl_lahir" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jenis Kelamin</td>
+                                                    <td>
+                                                    <select class="form-control" required="" name="jenis_kelamin">
+                                                        <option>--</option>
+                                                        <option>Laki-laki</option>
+                                                        <option>Perempuan</option>
+                                                    </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Agama</td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                        <select class="form-control" required="" name="agama">
+                                                            <option>--</option>
+                                                            <option>Islam</option>
+                                                            <option>Kristen</option>
+                                                            <option>Katholik</option>
+                                                            <option>Hindu</option>
+                                                            <option>Buddha</option>
+                                                            <option>KongHuCu</option>
+                                                        </select>    
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alamat</td> 
+                                                    <td><textarea class="form-control" required="" name="alamat" autocomplete="off"></textarea> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>No Telepon</td>
+                                                    <td><input type="text" autocomplete="off" maxlength="18" required="" class="form-control" name="no_tlp"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jabatan</td>
+                                                    <td>
+                                                    <select class="form-control" name="jabatan" required="">
+                                                    <?php 
+
+                                                    include 'koneksi.php';
+
+                                                    $sql = "SELECT * FROM tb_jabatan";
+
+                                                    $hasil = mysqli_query($koneksi, $sql);
+
+                                                    while ($data = mysqli_fetch_array($hasil)) {
+
+                                                    ?>
+                                                    <option value="<?php echo $data['jabatan'];?>"><?php echo $data['jabatan']; ?></option>
+                                                    <?php } ?>
+
+                                                    </select>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Foto</td>
+                                                    <td>
+                                                        <input type="file" name="foto" required="">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                                    </td>
+                                                    <td>
+                                                        <input type="reset" name="" value="Batal" class="btn btn-danger">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>       
+                            </div>    
+                        </div>
+                        <?php 
+                        include 'koneksi.php';
+                        $query1 = "SELECT * FROM tb_karyawan ORDER BY id_karyawan";
+
+                        $pola = 'asc';
+                        $polabaru = 'asc';
+
+                        if (isset($_GET['orderby'])) {
+                            $orderby = $_GET['orderby'];
+                            $pola = $_GET['pola'];
+
+                        $query1 = "SELECT * FROM tb_karyawan ORDER BY $orderby $pola";
+                        mysqli_query($koneksi, $query1);
+                        if ($pola=='asc') {
+                            $polabaru = 'desc';
+                        }else{
+                            $polabaru = 'asc';
+                        }
+
+                        }
+                         ?>
+                        <div class="row">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>NIP</th>
+                                                <th>Nama</th>
+                                                <th>Tempat & tanggal lahir</th>
+                                                <th class="text-right">Jenis Kelamin</th>
+                                                <th class="text-right">Agama</th>
+                                                <th>Alamat</th>
+                                                <th>Nomor Telepon</th>
+                                                <th>Jabatan</th>
+                                                <th>Foto</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <?php  
+
+                                            $no = 1;
+ 
+                                         ?>
+                                        <tbody>
+                                           
+                                           <?php 
+                                           $no++;
+                                            include 'paging.php';
+
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>>Previous</a>
+                </li>
+                <?php 
+                for($x=1;$x<=$total_halaman;$x++){
+                    ?> 
+                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                    <?php
+                }
+                ?>              
+                <li class="page-item">
+                    <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="view/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="view/bootstrap-4.1/popper.min.js"></script>
+    <script src="view/bootstrap-4.1/bootstrap.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
