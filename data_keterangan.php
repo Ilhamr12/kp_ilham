@@ -64,32 +64,29 @@ session_start();
                         <li class="has-sub">
                             <a class="js-arrow" href="admin.php">
                                 <i class="fas fa-tachometer-alt"></i>Beranda</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="data_karyawan.php">
-                                <i class="fas fa-chart-bar"></i>Data Karyawan</a>
-                        </li>
-                        <li>
-                            <a href="data_user.php">
-                                <i class="fas fa-table"></i>Data user</a>
-                        </li>
-                        <li>
-                            <a href="data_jabatan.php">
-                                <i class="far fa-check-square"></i>Data Jabatan</a>
-                        </li>
-                        <li>
-                            <a href="data_absen.php">
-                                <i class="fas fa-calendar-alt"></i>Data Absen</a>
-                        </li>
-                       <li>
-                            <a href="data_keterangan.php">
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list"></ul>
+                                    </li>
+                                    <li>
+                                        <a href="data_karyawan.php">
+                                            <i class="fas fa-chart-bar"></i>Data Karyawan</a>
+                                    </li>
+                                    <li>
+                                        <a href="data_user.php">
+                                            <i class="fas fa-table"></i>Data user</a>
+                                    </li>
+                                    <li>
+                                        <a href="data_jabatan.php">
+                                            <i class="far fa-check-square"></i>Data Jabatan</a>
+                                    </li>
+                                    <li>
+                                        <a href="data_absen.php">
+                                            <i class="fas fa-calendar-alt"></i>Data Absen</a>
+                                    </li>
+                                    <li>
+                                    <a href="data_keterangan.php">
                                 <i class="fas fa-table"></i>Data Keterangan
                             </a>
                         </li>
-                       
-                       
                     </ul>
                 </div>
             </nav>
@@ -151,28 +148,6 @@ session_start();
             </header>
             <!-- END HEADER DESKTOP-->
 
-            <?php 
-                        include 'koneksi.php';
-                        $query1 = "SELECT * FROM tb_keterangan ORDER BY id_karyawan";
-
-                        $pola = 'asc';
-                        $polabaru = 'asc';
-
-                        if (isset($_GET['orderby'])) {
-                            $orderby = $_GET['orderby'];
-                            $pola = $_GET['pola'];
-
-                        $query1 = "SELECT * FROM tb_keterangan ORDER BY $orderby $pola";
-                        mysqli_query($koneksi, $query1);
-                        if ($pola=='asc') {
-                            $polabaru = 'desc';
-                        }else{
-                            $polabaru = 'asc';
-                        }
-
-                        }
-                         ?>
-
             <!-- MAIN CONTENT-->
 
             <div class="main-content">
@@ -189,7 +164,7 @@ session_start();
                                             <th>keterangan</th>
                                             <th class="text-right">alasan</th>
                                             <th class="text-right">waktu</th>
-                                            <th>bukti</th>
+                                            <th>Bukti</th>
                                             <th>Aksi</th> 
                                         </tr>
                                     </thead>

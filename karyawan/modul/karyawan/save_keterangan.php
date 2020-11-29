@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+session_start(); 
 include 'koneksi.php';
 if (isset($_POST['simpan'])) {
 	
@@ -9,22 +9,18 @@ if (isset($_POST['simpan'])) {
 	$keterangan = $_POST['keterangan'];
 	$alasan = $_POST['alasan'];
 	$waktu = $_POST['waktu'];
-
 	//untuk gambar
-	$bukti = $_FILES['bukti']['name'];
-	$tmp = $_FILES['bukti']['tmp_name'];
+	$bukti    = $_FILES['bukti']['name'];
+	$tmp      = $_FILES['bukti']['tmp_name'];
 	$buktibaru = date('dmYHis').$bukti;
-	$path = "images/".$buktibaru;
-
+	$path     = "../../../image_keterangan/".$buktibaru;
 }
 
 if (move_uploaded_file($tmp, $path)) {
 	$sql = "SELECT * FROM tb_keterangan WHERE id_karyawan = '".$id_karyawan."'";
-	mysqli_query($koneksi, $sql);
-
 }
 
-$query = "INSERT INTO tb_keterangan SET id_karyawan = '$id_karyawan', nama='$nama', keterangan='$keterangan', alasan='$alasan', waktu='$waktu', bukti='$buktibaru'";
+$query = "INSERT INTO tb_keterangan set id='$id', id_karyawan='$id_karyawan', nama='$nama', keterangan='$keterangan', alasan='$alasan', waktu='$waktu', bukti='$buktibaru'";
 mysqli_query($koneksi, $query);
 
 if ($query) {

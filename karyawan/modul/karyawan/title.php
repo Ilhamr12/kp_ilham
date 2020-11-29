@@ -197,7 +197,7 @@ error_reporting(0);
                                                 </tr>
                                                 <tr>
                                                     <td>Foto surat keterangan sakit / izin</td>
-                                                    <td><input type="file" required="" name="bukti"></td>
+                                                    <td><input type="file" name="bukti" required=""></td>
                                                 </tr>
                                                 <tr>
                                                     <td><button type="submit" name="simpan" class="btn btn-primary">Beri Keterangan</button></td>
