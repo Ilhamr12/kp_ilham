@@ -107,7 +107,7 @@ error_reporting(0);
                             <div class="header-button">
                                
                                  <?php
-                                    $id = $_SESSION['idsi'];
+                                    $id = $_SESSION['id'];
                                     include '../koneksi.php';
                                     $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                     $query = mysqli_query($koneksi, $sql);
@@ -143,7 +143,7 @@ error_reporting(0);
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="logout.php">
+                                                    <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@ error_reporting(0);
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1" style="text-align: center;">Selamat Datang <?php echo $_SESSION['namasi']; ?>, Silahkan Absen</h2>
+                                    <h2 class="title-1" style="text-align: center;">Selamat Datang <?php echo $_SESSION['nama']; ?>, Silahkan Absen</h2>
                                     <button class="au-btn au-btn-icon au-btn--blue">
                                         
                                 </div>
@@ -184,14 +184,14 @@ error_reporting(0);
                                                 <td>
                                                 
                                                 <input type="text" readonly="" class="form-control" name="id_karyawan" autocomplete="off" size="25px" maxlength="25px" value="<?php echo $_SESSION
-                                                ['idsi'];?>">    
+                                                ['id'];?>">    
                                                 
                                             </td>
                                             </tr>
                                            
                                             <tr>
                                                 <td>Nama</td>
-                                                <td><input type="text" class="form-control" name="nama" autocomplete="off" readonly="" value="<?php echo $_SESSION['namasi']; ?>"></td>
+                                                <td><input type="text" class="form-control" name="nama" autocomplete="off" readonly="" value="<?php echo $_SESSION['nama']; ?>"></td>
                                             </tr>
 
                                              <tr>

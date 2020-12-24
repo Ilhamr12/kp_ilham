@@ -131,7 +131,8 @@ session_start();
                             </a>
                         </li>
                         <li>
-                            <a href="logout.php">Logout</a>
+                            <a href="logout.php">
+                            <i class="fas fa-power-off"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>

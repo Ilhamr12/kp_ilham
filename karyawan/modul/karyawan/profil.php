@@ -111,7 +111,7 @@ error_reporting(0);
                             <div class="header-button">
                                
                                  <?php
-                                    $id = $_SESSION['idsi'];
+                                    $id = $_SESSION['id'];
                                     include '../koneksi.php';
                                     $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                     $query = mysqli_query($koneksi, $sql);
@@ -119,7 +119,7 @@ error_reporting(0);
 
                                      ?>
 
-                                <div class="account-wrap">
+                                <!-- <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="../images/<?php echo $r['foto'];?>" class="img-circle" alt="<?php echo $r['nama'];?>" />
@@ -151,7 +151,7 @@ error_reporting(0);
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@ error_reporting(0);
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1" style="text-align: center;">Profil anda <?php echo $_SESSION['namasi']; ?></h2>
+                                    <h2 class="title-1" style="text-align: center;">Profil anda <?php echo $_SESSION['nama']; ?></h2>
                                     <button class="au-btn au-btn-icon au-btn--blue">
                                         
                                 </div>
@@ -176,12 +176,12 @@ error_reporting(0);
                         <!-- FORM -->
                         <div class="row">
                            <div class="table-responsive table--no-card m-b-30">
-                                <form action="modul/karyawan/keterangan_sv.php" method="post" enctype="multipart/form-data">
+                                <form action="modul/karyawan/save_keterangan.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         
                                         <?php
-                                        $id = $_SESSION['idsi'];
-                                        include 'koneksi.php';
+                                        include '../koneksi.php';
+                                        $id = $_SESSION['id'];
                                         $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                         $query = mysqli_query($koneksi, $sql);
                                         $r = mysqli_fetch_array($query);

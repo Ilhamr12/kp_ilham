@@ -105,7 +105,7 @@ error_reporting(0);
 
                                      ?>
 
-                                <div class="account-wrap">
+                                <!-- <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="../images/<?php echo $r['foto'];?>" class="img-circle" alt="<?php echo $r['nama'];?>" />
@@ -138,7 +138,7 @@ error_reporting(0);
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

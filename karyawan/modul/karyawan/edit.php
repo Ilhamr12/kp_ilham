@@ -57,6 +57,14 @@ error_reporting(0);
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
+                        <li>
+                            <a href="?m=karyawan&s=profil">
+                            <i class="fas fa-user"></i>Account</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">
+                            <i class="fas fa-power-off"></i>Logout</a>
+                        </li>
                        
                     </ul>
                 </div>
@@ -79,6 +87,14 @@ error_reporting(0);
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
+                        <li>
+                            <a href="?m=karyawan&s=profil">
+                            <i class="fas fa-user"></i>Account</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">
+                            <i class="fas fa-power-off"></i>Logout</a>
+                        </li>
                        
                     </ul>
                 </nav>
@@ -100,7 +116,7 @@ error_reporting(0);
                             <div class="header-button">
                                 
                                 <?php
-                                    $id = $_SESSION['idsi'];
+                                    $id = $_SESSION['id'];
                                     include '../koneksi.php';
                                     $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                     $query = mysqli_query($koneksi, $sql);
@@ -108,7 +124,7 @@ error_reporting(0);
 
                                     ?>
 
-                                <div class="account-wrap">
+                                <!-- <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="../images/<?php echo $r['foto'];?>" class="img-circle" alt="<?php echo $r['nama'];?>" />
@@ -141,7 +157,7 @@ error_reporting(0);
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -156,7 +172,7 @@ error_reporting(0);
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1" style="text-align: center;">Profil anda <?php echo $_SESSION['namasi']; ?></h2>
+                                    <h2 class="title-1" style="text-align: center;">Profil anda <?php echo $_SESSION['id']; ?></h2>
                                     <button class="au-btn au-btn-icon au-btn--blue">
                                         
                                 </div>
@@ -171,7 +187,7 @@ error_reporting(0);
                                     <div class="form-group">
                                         
                                         <?php
-                                        $id = $_SESSION['idsi'];
+                                        $id = $_SESSION['id'];
                                         include 'koneksi.php';
                                         $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                         $query = mysqli_query($koneksi, $sql);
