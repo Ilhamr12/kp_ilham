@@ -114,6 +114,7 @@ error_reporting(0);
                                             <a class="js-acc-btn" href="#"><?php echo $r['nama']; ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
+                                            <div class="dropdown-menu dropdown-menu-right">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">

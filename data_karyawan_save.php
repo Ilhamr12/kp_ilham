@@ -14,7 +14,6 @@ if (isset($_POST['simpan'])) {
 	$no_tlp = $_POST['no_tlp'];
 	$jabatan = $_POST['jabatan'];
 
-
 	//untuk gambar
 	$foto     = $_FILES['foto']['name'];
 	$tmp      = $_FILES['foto']['tmp_name'];

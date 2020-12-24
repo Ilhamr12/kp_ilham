@@ -18,10 +18,10 @@ error_reporting(0);
     <title>Beranda Karyawan</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <!-- <link href="css/font-face.css" rel="stylesheet" media="all"> -->
     <link href="view/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="view/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="view/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"> -->
 
     <!-- Bootstrap CSS-->
     <link href="view/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -90,12 +90,12 @@ error_reporting(0);
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" value="Absen Karyawan" readonly="" />
+                                <input class="au-input au-input--xl" type="text" name="search" value="Keterangan" readonly=""/>
                             </form>
                             <div class="header-button">
-                               
+                                
                                  <?php
-                                    $id = $_SESSION['idsi'];
+                                    $id = $_SESSION['id'];
                                     include '../koneksi.php';
                                     $sql = "SELECT * FROM tb_karyawan WHERE id_karyawan = '$id'";
                                     $query = mysqli_query($koneksi, $sql);
@@ -112,6 +112,7 @@ error_reporting(0);
                                             <a class="js-acc-btn" href="#"><?php echo $r['nama']; ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
+                                            <div class="dropdown-menu dropdown-menu-right">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
@@ -122,17 +123,21 @@ error_reporting(0);
                                                     <h5 class="name">
                                                         <a href="#"><?php echo $r['nama']; ?></a>
                                                     </h5>
-                                                    
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                     <a href="?m=karyawan&s=profil">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
-                                                <!-- </div> -->
-                            <div class="account-dropdown__footer">
-                                <a href="logout.php">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="logout.php">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
