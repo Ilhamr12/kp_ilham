@@ -55,7 +55,15 @@ error_reporting(0);
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>                   
+                        </li>    
+                        <li>
+                            <a href="?m=karyawan&s=profil">
+                            <i class="fas fa-user"></i>Account</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">
+                            <i class="fas fa-power-off"></i>Logout</a>
+                        </li>               
                     </ul>
                 </div>
             </nav>
@@ -75,6 +83,14 @@ error_reporting(0);
                         <li class="active has-sub">
                             <a class="js-arrow" href="?m=awal">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="?m=karyawan&s=profil">
+                            <i class="fas fa-user"></i>Account</a>
+                        </li>
+                        <li>
+                            <a href="logout.php">
+                            <i class="fas fa-power-off"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>
